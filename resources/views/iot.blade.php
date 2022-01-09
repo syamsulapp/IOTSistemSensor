@@ -209,7 +209,7 @@
                             <!-- Exterior lights  START -->
                             <h3 class="card-title my-3">Lights - selected</h3>
                             <div class="card" data-unit="switch-light-6">
-                                <form action="{{ route('lampu_1') }}" method="POST">
+                                <form action="{{ route('request_lampu') }}" method="POST">
                                     @csrf
                                     <div class="card-body d-flex flex-row justify-content-start">
                                         <svg class="icon-sprite">
@@ -217,14 +217,20 @@
                                             <use xlink:href="assets/images/icons-sprite.svg#bulb-eco" />
                                         </svg>
                                         <h5>Ruang Tamu</h5>
+                                        @if($lampu['ruang_tamu'] != 1)
                                         <label class="switch ml-auto">
                                             <button data-action="all-on" type="submit" name="rt" class="btn btn-primary lights-control" value="on"><strong>ON</strong></button>
                                         </label>
+                                        @else
+                                        <label>
+                                            <button data-action="all-off" type="submit" name="rt" class="btn btn-secondary lights-control" value="off"><strong>OFF</strong></button>
+                                        </label>
+                                        @endif
                                     </div>
                                 </form>
                             </div>
                             <div class="card" data-unit="switch-light-7">
-                                <form action="{{ route('lampu_1') }}" method="POST">
+                                <form action="{{ route('request_lampu') }}" method="POST">
                                     @csrf
                                     <div class="card-body d-flex flex-row justify-content-start">
                                         <svg class="icon-sprite">
@@ -232,14 +238,20 @@
                                             <use xlink:href="assets/images/icons-sprite.svg#bulb-eco" />
                                         </svg>
                                         <h5>Kamar Tidur</h5>
+                                        @if($lampu['kamar_tidur'] != 1)
                                         <label class="switch ml-auto">
                                             <button data-action="all-on" type="submit" name="kt" class="btn btn-primary lights-control" value="on"><strong>ON</strong></button>
                                         </label>
+                                        @else
+                                        <label>
+                                            <button data-action="all-off" type="submit" name="kt" class="btn btn-secondary lights-control" value="off"><strong>OFF</strong></button>
+                                        </label>
+                                        @endif
                                     </div>
                                 </form>
                             </div>
                             <div class="card" data-unit="switch-light-8">
-                                <form action="{{ route('lampu_1') }}" method="POST">
+                                <form action="{{ route('request_lampu') }}" method="POST">
                                     @csrf
                                     <div class="card-body d-flex flex-row justify-content-start">
                                         <svg class="icon-sprite">
@@ -247,9 +259,15 @@
                                             <use xlink:href="assets/images/icons-sprite.svg#bulb-eco" />
                                         </svg>
                                         <h5>Teras</h5>
+                                        @if($lampu['teras'] != 1)
                                         <label class="switch ml-auto">
                                             <button data-action="all-on" type="submit" name="tr" class="btn btn-primary lights-control" value="on"><strong>ON</strong></button>
                                         </label>
+                                        @else
+                                        <label>
+                                            <button data-action="all-off" type="submit" name="tr" class="btn btn-secondary lights-control" value="off"><strong>OFF</strong></button>
+                                        </label>
+                                        @endif
                                     </div>
                                 </form>
                             </div>

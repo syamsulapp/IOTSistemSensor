@@ -22,4 +22,4 @@ Route::get('/iot_sistem_sensor/index', [IotController::class, 'index'])->name('h
 Route::get('/iot_sistem_sensor/suhu', [IotController::class, 'suhu'])->name('suhu');
 
 Route::post('/iot_sistem_sensor/post', [IotController::class, 'store'])->name('post_data');
-Route::post('/iot_sistem_sensor/lampu1', [IotController::class, 'lampu'])->name('lampu_1');
+Route::post('/iot_sistem_sensor/lampu1', [IotController::class, 'lampu'])->name('request_lampu');

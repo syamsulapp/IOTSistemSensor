@@ -15,7 +15,12 @@ class IotController extends Controller
      */
     public function index()
     {
-        return view('iot');
+        $lampu = [
+            'ruang_tamu' => DB::table('data')->max('lampu_1'),
+            'kamar_tidur' => DB::table('data')->max('lampu_2'),
+            'teras' => DB::table('data')->max('teras_rumah'),
+        ];
+        return view('iot', compact('lampu'));
     }
 
     public function suhu()
@@ -70,16 +75,38 @@ class IotController extends Controller
     {
         $lampu = IotModels::find(1);
 
-        if ($request->rt  == "on") {
-            $lampu->lampu_1 = 1;
-            $lampu->save();
-        } else if ($request->kt == "on") {
-            $lampu->lampu_2 = 1;
-            $lampu->save();
-        } else if ($request->tr == "on") {
-            $lampu->teras_rumah = 1;
-            $lampu->save();
+        switch ($request->rt) {
+            case "on":
+                $lampu->lampu_1 = 1;
+                $lampu->save();
+                break;
+            case "off":
+                $lampu->lampu_1 = 0;
+                $lampu->save();
+                break;
         }
+        switch ($request->kt) {
+            case "on":
+                $lampu->lampu_2 = 1;
+                $lampu->save();
+                break;
+            case "off":
+                $lampu->lampu_2 = 0;
+                $lampu->save();
+                break;
+        }
+        switch ($request->tr) {
+            case "on":
+                $lampu->teras_rumah = 1;
+                $lampu->save();
+                break;
+            case "off":
+                $lampu->teras_rumah = 0;
+                $lampu->save();
+                break;
+        }
+
+
 
         return redirect('/iot_sistem_sensor/index');
     }
